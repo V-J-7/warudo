@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+  </style>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" async></script>
+</head>
+<body>
+  <div class="container">
+    <div class="welcome-message">
+      <div>
+        <h1>(za)</h1>
+        <h1>(warudo)</h1>
+      </div>
+      <div>
+        <h1>(enter)</h1>
+        <h1>(the)</h1>
+        <h1>(space)</h1>
+      </div>
+    </div>
+
+    <div class="login-signup">
+      <div class="login">
+        <h1>(Login)</h1>
+        <div class="inside">
+          <div class="inputs">
+            <label for="username">
+              Username:
+              <input type="text" id="login-username" name="username" placeholder="Enter your username">
+            </label>
+            <br>
+            <label for="password">
+              Password:
+              <input type="password" id="login-password" name="password" placeholder="Enter your password">
+            </label>
+          </div>
+          <div class="login-btn">
+            <button type="submit" class="btn" onclick="login()">Login</button>
+          </div>
+          <h1 id="login-message"></h1>
+        </div>
+      </div>
+
+      <div class="signup">
+        <h1>(Sign Up)</h1>
+        <div class="inside">
+          <div class="inputs">
+            <label for="username">
+              Username:
+              <input type="text" id="signup-username" name="username" placeholder="Enter your username">
+            </label>
+            <br>
+            <label for="password">
+              Password:
+              <input type="password" id="signup-password" name="password" placeholder="Enter your password">
+            </label>
+          </div>
+          <div class="login-btn">
+            <button type="submit" class="btn" onclick="signup()">Sign Up</button>
+          </div>
+        </div>
+      </div>
+
+      <h1 id="signup-message"></h1>
+    </div>
+  </div>
+</body>
+</html>
