@@ -1,0 +1,209 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: bold;
+    letter-spacing: 0.4em;
+    color: #00F0FF;
+}
+
+body {
+    background-color: #0A0A0A;
+}
+
+nav {
+    height: 15vh;
+    border-bottom: 4px solid #BD00FF;
+    display: flex;   
+    background-color: #111;
+}
+
+.logo {
+    height: 100%;
+    display: flex;
+    flex: 1 1 400px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-right: 4px solid #BD00FF;
+}
+
+.logo h1 {
+    font-size: clamp(1rem, 5vw, 2.5rem);
+    color: #00F0FF;
+}
+
+.logo a {
+    text-decoration: none;
+    color: #00F0FF;
+}
+
+.description {
+    flex: 2 1 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    border-right: 4px solid #BD00FF;
+}
+
+.description h1 {
+    font-size: clamp(1rem, 5vw, 2.5rem);
+    color: #00F0FF;
+}
+
+.description i {
+    font-size: clamp(1rem, 5vw, 2rem);
+    color: #BD00FF;
+}
+
+.profile {
+    flex: 3 1 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile i {
+    font-size: clamp(1rem, 5vw, 2rem);
+    color: #00F0FF;
+}
+
+.profile h1 {
+    font-size: clamp(1rem, 5vw, 2.5rem);
+    color: #00F0FF;
+}
+
+.container {
+    height: 100vh;
+    width: 99vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.difficulty-selector {
+    height:80%;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size:2em;
+}
+
+.difficulty-selector h1 {
+    cursor:pointer;
+}
+
+.row {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 70%;
+    gap: 0.5rem;
+}
+
+.box {
+    flex: 1;
+    max-width: 100px;          
+    aspect-ratio: 1 / 1;      
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #111;
+    transition:1s ease-out;
+}
+
+.char-input{
+    width: 100%;
+    height: 100%;
+    color: white;
+    border:none;
+    text-align: center;
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    outline: none;
+    background-color: transparent;
+}   
+
+#popup {
+    display: none;
+    position: fixed;
+    top: 0%;
+    left:0%;
+    width: 100%; 
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    transition: 1.5s ease-out;
+}
+
+#popup-message {
+    font-size:2.5em;
+    text-align: center;
+}
+
+#popup-message span {
+    color:#BD00FF;
+}
+
+@media screen and (max-width: 1024px) {
+    nav {
+        flex-direction: column;
+        height: auto;
+    }
+    .logo, .description, .profile {
+        flex: unset;
+        width: 100%;
+        border-right: none;
+        border-bottom: 4px solid #BD00FF;
+    }
+    .profile {
+        border-bottom: none;
+        margin-bottom: 1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .row {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+    }
+    .box {
+        max-width: 50px;
+    }
+    .char-input {
+        font-size: clamp(1.2rem, 8vw, 2rem);
+    }
+    .difficulty-selector {
+        font-size: 1.5em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    nav {
+        border-bottom: 2px solid #BD00FF;
+    }
+    .logo h1,
+    .description h1,
+    .profile h1 {
+        font-size: clamp(0.8rem, 6vw, 2rem);
+    }
+    .description i,
+    .profile i {
+        font-size: clamp(0.8rem, 6vw, 1.5rem);
+    }
+    .box {
+        max-width: 40px;
+    }
+    .difficulty-selector {
+        height: 90%;
+        font-size: 1.2em;
+    }
+}

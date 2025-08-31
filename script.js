@@ -22,6 +22,7 @@ function login() {
         loginMessage.innerHTML = "(Wrong password)"
     }
     else {
+        sessionStorage.setItem("username", loginUsername)
         window.location.href = "game.html"
     }
 }
