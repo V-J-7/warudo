@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="user.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+    </style>
+    <script src="user.js" defer></script>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="index.html"><h1>(the)</h1></a>
+            <a href="index.html"><h1>(warudo)</h1></a>
+        </div>
+        <div class="description">
+            <h1 id="username-display"></h1>
+        </div>
+        <div class="profile">
+            <a href="game.html"><h1 style = "font-size: 2em">(back to game)</h1></a>
+        </div>
+    </nav>
+
+    <div class="settings-container">
+        <div class="settings-left">
+            <div class="setting-section">
+                <h1>(Update Password)</h1>
+                <div class="inputs">
+                    <input type="password" id="current-password" placeholder="Current Password">
+                    <input type="password" id="new-password" placeholder="New Password">
+                </div>
+                <button class="btn" onclick="updatePassword()">Update</button>
+                <h2 id="update-message"></h2>
+            </div>
+            <div class="setting-section delete-section">
+                <h1>(Delete Account)</h1>
+                <p>(this action is irreversible)</p>
+                <input type="password" id="delete-confirm-password" placeholder="Confirm Password to Delete">
+                <button class="btn delete-btn" onclick="deleteAccount()">Delete My Account</button>
+            </div>
+        </div>
+        <div class="settings-right">
+            <div class="setting-section">
+                <h1>(Game Statistics)</h1>
+                <p>Average Score: <span id="average-score"></span></p>
+                <div id="game-stats-container">
+                    <table id="stats-table">
+                        <thead>
+                            <tr><th>Word</th><th>Difficulty</th><th>Score</th></tr>
+                        </thead>
+                        <tbody id="stats-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

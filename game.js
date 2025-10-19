@@ -1,10 +1,10 @@
+document.getElementsByClassName("profile")[0].addEventListener("click", () => {
+    window.location.href = "user.html";
+    
+});
+
 // Get username from session storage and display it on the page.
 document.getElementById("username").innerHTML = "(" + sessionStorage.getItem("username");
-
-// Convert all words in the wordList to uppercase for consistent comparison.
-for (let i = 0; i < wordList.length; i++) {
-    wordList[i] = wordList[i].map((value) => value.toUpperCase())
-}
 
 // Set the total number of attempts allowed for the game.
 let attempts = 6;
@@ -32,12 +32,15 @@ function createBoxes(wordLen) {
 }
 // Initialize the word
 let word = "";
+let difficulty = "";
 
 // Keep track of the current row the user is typing in.
 var rowIndex = 0;
 
 // This function is triggered when a user selects a difficulty level.
 function difficultyChooser(n) {
+    const difficulties = ["Pushover", "Tryhard", "Nightmare"];
+    difficulty = difficulties[n];
     let difficultySelector = document.getElementsByClassName("difficulty-selector")[0];
     let indicatorContainer = document.getElementsByClassName("indicators-container")[0];
     indicatorContainer.style.display = "flex";
@@ -121,17 +124,17 @@ function handleInput(wordLen) {
                     wordMessage.innerHTML = ""
                     // Validate the guess against the secret word.
                     validateInput(rowIndex, enteredWord, word);
-                    rowIndex++;
                     // Check for a win condition.
                     if (enteredWord === word) {
                         createPopup(points);
-                        rowIndex = attempts; // Stop further input by setting rowIndex out of bounds.                      
-                    }
-                    points--;
-                    // Check for a loss condition (out of points/attempts).
-                    if (points === 0) {
-                        createPopup(points);
-                        rowIndex = 5;
+                        rowIndex = attempts; // Stop further input by setting rowIndex out of bounds.
+                    } else {
+                        points--;
+                        rowIndex++;
+                        // Check for a loss condition (out of points/attempts).
+                        if (points === 0 && rowIndex === attempts) {
+                            createPopup(points);
+                        }
                     }
                 }
             });
@@ -152,15 +155,54 @@ function createPopup(points) {
         popupMessage.innerHTML += `<h1>(You scored <span>${points}</span> out of <span>${attempts}</span>) </h1>`
     }
     else {
-        // Display a "You Lost" message and reveal the correct word.
+        // Display a "You Lost" message and reveal the correct word. 
         popupMessage.innerHTML = `<h1>(You Lost!)</h1>`
         popupMessage.innerHTML += `<h1>(You scored ${points} out of 6 points) </h1>`
         popupMessage.innerHTML += `<h2>(The correct word was <span>${word}</span>)</h2>`
     }
+    updateUserScore(points, word, difficulty);
     popup.addEventListener("click", () => {
         popup.style.display = "none";
         location.reload();
     })
+
+    
+}
+
+// Function to update the user's score in localStorage
+function updateUserScore(newScore, gameWord, gameDifficulty) {
+    const currentUser = sessionStorage.getItem("username");
+    if (!currentUser) return;
+
+    const userDataString = localStorage.getItem(currentUser);
+    if (!userDataString) return;
+
+    let userData;
+    try {
+        // Try to parse the data as a JSON object (new format)
+        userData = JSON.parse(userDataString);
+    } catch (e) {
+        // If parsing fails, assume it's the old format (just a password string)
+        // and create a new User object to upgrade the data structure.
+        console.log("Upgrading user data structure for:", currentUser);
+        userData = {
+            password: userDataString, // The old string was the password
+            scores: [],
+            averageScore: 0
+        };
+    }
+
+    const newGame = {
+        word: gameWord,
+        difficulty: gameDifficulty,
+        score: newScore
+    };
+
+    userData.scores.unshift(newGame); // Add to the beginning of the array
+    const totalScore = userData.scores.reduce((sum, game) => sum + game.score, 0);
+    userData.averageScore = userData.scores.length > 0 ? (totalScore / userData.scores.length).toFixed(2) : 0;
+
+    localStorage.setItem(currentUser, JSON.stringify(userData));
 }
 
 // This function validates the submitted word and provides visual feedback.
