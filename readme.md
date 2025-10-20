@@ -1,40 +1,40 @@
 # 🧩 Warudo
 
-**Warudo** is a word game inspired by *Wordle*
-It offers a clean, responsive, and feature-rich interface that enhances the traditional word-guessing experience.
+**Warudo** is an interactive word game inspired by *Wordle*
+It delivers a refined and engaging experience with multiple difficulty levels, responsive design, user accounts, and detailed performance tracking — all within a seamless browser-based interface.
 
 ---
 
 ## 🎮 Game Overview
 
-The goal of the game is to guess the secret word within a limited number of attempts.  
-After each guess, the game provides color-coded feedback for every letter:
+Warudo challenges players to guess a hidden word within a limited number of attempts.  
+After each guess, visual feedback is provided to indicate how close the player is to the correct answer.
 
-- **Cyan:** Correct letter in the correct position  
-- **Magenta:** Correct letter but in the wrong position  
-- **Grey:** Letter not present in the word  
+### Color Indicators
 
-A virtual keyboard is also provided to help players keep track of the letters they have already used.
+| Color | Meaning |
+|--------|----------|
+| Cyan | Correct letter in the correct position |
+| Magenta | Correct letter but in the wrong position |
+| Grey | Letter not present in the word |
+
+A virtual on-screen keyboard updates dynamically to show which letters have been used and how they performed, helping players make more informed guesses.
 
 ---
 
 ## ✨ Features
 
 - **Multiple Difficulty Levels**  
-  Choose between varying levels of difficulty to match your skill and preference.
+  Choose between various difficulty settings for a customized challenge.  
 
 - **Responsive Design**  
-  The game layout adjusts seamlessly across desktop, tablet, and mobile devices.
+  Fully adaptable layout that provides a consistent experience across desktops, tablets, and mobile devices.  
 
 - **User Account Management**  
-  - Create an account to track your progress.  
-  - Update your password at any time.  
-  - Delete your account when desired.
+  Create, update, or delete your account easily, with personalized data saved between sessions.  
 
 - **Performance Tracking**  
-  - Displays the **last five attempts**.  
-  - Calculates and shows the **overall average score**.
+  View your **last five attempts**, track your **average score**, and monitor your progress over time.  
 
 - **Virtual Keyboard**  
-  An on-screen keyboard that dynamically updates based on your inputs and feedback colors.
-
+  Built-in keyboard that visually tracks letters entered and feedback status in real time.
